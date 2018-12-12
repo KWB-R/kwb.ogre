@@ -1,0 +1,115 @@
+dbMemo "SQL" ="SELECT n.*, \"\" AS LocalDateTime, 0 AS UTCOffset, \"\" AS DateTimeUTC, t.SiteID"
+    ", v.VariableID, \"nc\", 999 AS METHOD_ID, 999 AS SOURCE_ID, 0 AS QualityControlL"
+    "evelID, s.LabSampleCode, t.SiteCode, v.VariableName\015\012FROM ((_NEW_LAB_DATA_"
+    " AS n LEFT JOIN Samples AS s ON n.sampleID = s.LabSampleCode) LEFT JOIN Sites AS"
+    " t ON n.sampleSite = t.SiteCode) LEFT JOIN Variables AS v ON n.parName = v.Varia"
+    "bleName;\015\012"
+dbMemo "Connect" =""
+dbBoolean "ReturnsRecords" ="-1"
+dbInteger "ODBCTimeout" ="60"
+dbBoolean "OrderByOn" ="-1"
+dbByte "Orientation" ="0"
+dbByte "DefaultView" ="2"
+dbBoolean "FilterOnLoad" ="0"
+dbBoolean "OrderByOnLoad" ="-1"
+dbMemo "OrderBy" ="[_NEW_LAB_DATA_DataValues].[LabSampleCode]"
+Begin
+    Begin
+        dbText "Name" ="Expr1006"
+        dbInteger "ColumnWidth" ="1320"
+        dbBoolean "ColumnHidden" ="0"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="METHOD_ID"
+        dbInteger "ColumnWidth" ="1650"
+        dbBoolean "ColumnHidden" ="0"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="n.parVal"
+        dbInteger "ColumnWidth" ="1050"
+        dbBoolean "ColumnHidden" ="0"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="t.SiteID"
+        dbInteger "ColumnWidth" ="990"
+        dbBoolean "ColumnHidden" ="0"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="v.VariableID"
+        dbInteger "ColumnWidth" ="1440"
+        dbBoolean "ColumnHidden" ="0"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="SOURCE_ID"
+        dbInteger "ColumnWidth" ="1560"
+        dbBoolean "ColumnHidden" ="0"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="LocalDateTime"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="UTCOffset"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="DateTimeUTC"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="QualityControlLevelID"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="n.parName"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="n.sampleID"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="n.sampleDate"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="n.sampleSite"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="n.method"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="n.unit"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="n.outOfLimit"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="n.numericValue"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="s.LabSampleCode"
+        dbInteger "ColumnWidth" ="1965"
+        dbBoolean "ColumnHidden" ="0"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="t.SiteCode"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="v.VariableName"
+        dbLong "AggregateType" ="-1"
+    End
+End

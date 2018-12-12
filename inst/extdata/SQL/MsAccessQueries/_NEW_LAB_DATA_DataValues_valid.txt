@@ -1,0 +1,139 @@
+dbMemo "SQL" ="INSERT INTO DataValues ( DataValue, LocalDateTime, UTCOffset, DateTimeUTC, SiteI"
+    "D, VariableID, CensorCode, MethodID, SourceID, QualityControlLevelID )\015\012SE"
+    "LECT numericValue, CDate(sampleDate), 0, CDate(sampleDate), SiteID, VariableID, "
+    "\"nc\", 0, 1, 0\015\012FROM _NEW_LAB_DATA_DataValues\015\012WHERE outOfLimit = \""
+    "\";\015\012"
+dbMemo "Connect" =""
+dbBoolean "ReturnsRecords" ="-1"
+dbInteger "ODBCTimeout" ="60"
+dbBoolean "OrderByOn" ="0"
+dbByte "Orientation" ="0"
+dbByte "DefaultView" ="2"
+dbBoolean "FilterOnLoad" ="0"
+dbBoolean "OrderByOnLoad" ="-1"
+Begin
+    Begin
+        dbText "Name" ="_NEW_LAB_DATA_DataValues.n.parVal"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="_NEW_LAB_DATA_DataValues.LocalDateTime"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="_NEW_LAB_DATA_DataValues.UTCOffset"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="_NEW_LAB_DATA_DataValues.DateTimeUTC"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="_NEW_LAB_DATA_DataValues.t.SiteID"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="_NEW_LAB_DATA_DataValues.v.VariableID"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="_NEW_LAB_DATA_DataValues.Expr1006"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="_NEW_LAB_DATA_DataValues.METHOD_ID"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="_NEW_LAB_DATA_DataValues.SOURCE_ID"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="_NEW_LAB_DATA_DataValues.QualityControlLevelID"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="_NEW_LAB_DATA_DataValues.t.SiteCode"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="_NEW_LAB_DATA_DataValues.n.parName"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="_NEW_LAB_DATA_DataValues.n.sampleID"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="_NEW_LAB_DATA_DataValues.n.sampleDate"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="_NEW_LAB_DATA_DataValues.n.sampleSite"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="_NEW_LAB_DATA_DataValues.n.method"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="_NEW_LAB_DATA_DataValues.n.unit"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="_NEW_LAB_DATA_DataValues.n.outOfLimit"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="_NEW_LAB_DATA_DataValues.n.numericValue"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="_NEW_LAB_DATA_DataValues.s.LabSampleCode"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="_NEW_LAB_DATA_DataValues.v.VariableName"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="parVal"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="Expr1001"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="Expr1002"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="Expr1003"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="SiteID"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="VariableID"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="Expr1006"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="METHOD_ID"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="SOURCE_ID"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="Expr1009"
+        dbLong "AggregateType" ="-1"
+    End
+End

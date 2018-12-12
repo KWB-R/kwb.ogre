@@ -1,0 +1,8 @@
+Package: kwb.ogre
+Maintainer: Hauke Sonnenberg <hauke.sonnenberg@kompetenz-wasser.de>
+Imports: kwb.datetime, kwb.db, kwb.event, kwb.logger, kwb.monitoring, kwb.odm, kwb.quantum, kwb.read, kwb.utils, manipulate
+Author: Hauke Sonnenberg
+Version: 0.0.99
+License: GPL
+Title: Functions used within the OGRE project at KWB; DEVELOPMENT version
+Description: This package contains functions for: reading logger files.

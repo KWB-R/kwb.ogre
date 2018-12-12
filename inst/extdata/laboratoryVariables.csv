@@ -1,0 +1,104 @@
+VariableName;VariableCode;VariableAbbreviation;VariableGroupName;UnitsAbbreviation
+Biologischer Sauerstoffbedarf;BSB5;BSB;Standardparameter;mg/L
+Chemischer Sauerstoffbedarf;CSB;CSB;Standardparameter;mg/L
+Orthophosphat;o-PO4-P;o-PO4-P;Standardparameter;mg/L
+Gesamt-Phosphor;P;P;Standardparameter;mg/L
+Gesamt-Phosphor filtriert;P ges. filtr.;P gel.;Standardparameter;mg/L
+Abfiltrierbare Stoffe;Susp. Stoffe;AFS;Standardparameter;mg/L
+Ammonium;NH4-N;NH4-N;Standardparameter;mg/L
+AFS fein (<63µm);AFS fein (0,45-63µm);AFS fein;Standardparameter;mg/L
+AFS grob (>63µm);AFS grob (>63µm);AFS grob;Standardparameter;mg/L
+Antimon;Sb;Sb;Metalle;ug/L
+Arsen;As;As;Metalle;ug/L
+Blei;Pb;Pb;Metalle;ug/L
+Blei gelöst;Pb gel.;Pb gel.;Metalle;ug/L
+Cadmium;Cd;Cd;Metalle;ug/L
+Cadmium gelöst;Cd gel.;Cd gel.;Metalle;ug/L
+Chrom;Cr;Cr;Metalle;ug/L
+Chrom gelöst;Cr gel.;Cr gel.;Metalle;ug/L
+Kupfer;Cu;Cu;Metalle;ug/L
+Kupfer gelöst;Cu gel.;Cu gel.;Metalle;ug/L
+Nickel;Ni;Ni;Metalle;ug/L
+Nickel gelöst;Ni gel.;Ni gel.;Metalle;ug/L
+Titan;Ti;Ti;Metalle;ug/L
+Titan gelöst;Ti gel.;Ti gel.;Metalle;ug/L
+Vanadium;V;V;Metalle;ug/L
+Vanadium gelöst;V gel.;V gel.;Metalle;ug/L
+Zink;Zn;Zn;Metalle;ug/L
+Zink gelöst;Zn gel.;Zn gel.;Metalle;ug/L
+Koffein;Koffein;;Tracersubstanzen;ug/L
+Carbamazepin;Carbamazepin;;Tracersubstanzen;ug/L
+Acesulfam;Acesulfam;;Tracersubstanzen;ug/L
+Formylaminoantipyrin;FAA;FAA;Tracersubstanzen;ug/L
+Gabapentin;Gabapentin;;Tracersubstanzen;ug/L
+Tri-n-butyl- + Tri-iso-butylphosphat (TBP);TBP;TBP;Flammschutzmittel;ug/L
+Tris(2-chlorethyl)phosphat (TCEP);TCEP;TCEP;Flammschutzmittel;ug/L
+Tris(2-chlor-1-methylethyl)phosphat (TCPP);TCPP;TCPP;Flammschutzmittel;ug/L
+Tris(1,3-dichlorisopropyl)phosphat (TDCP);TDCP;TDCP;Flammschutzmittel;ug/L
+Tris(2-butoxyethyl) phosphat (TBEP);TBEP;TBEP;Flammschutzmittel;ug/L
+Benzylbutylphthalat;Benzylbutylphthalat;BBP;Phthalate;ug/L
+Dibutylphthalat;Dibutylphthalat;DBP;Phthalate;ug/L
+Diethylphthalat;Diethylphthalat;DEP;Phthalate;ug/L
+Dimethylphthalat;Dimethylphthalat;DMP;Phthalate;ug/L
+Dioctylphthalat;Dioctylphthalat;DOP;Phthalate;ug/L
+Diethylhexylphthalat (DEHP);Diethylhexylphthalat;DEHP;Phthalate;ug/L
+Di-iso-decylphthalat + Di-iso-nonylphthalat;DIDP+DINP;DIDP+DINP;Phthalate;ug/L
+Carbendazim;Carbendazim;;Pestizide/Biozide;ug/L
+Cybutryn;Cybutryn;;Pestizide/Biozide;ug/L
+Diazinon;Diazinon;;Pestizide/Biozide;ug/L
+Diuron;Diuron;;Pestizide/Biozide;ug/L
+Tebuconazol;Tebuconazol;;Pestizide/Biozide;ug/L
+2,4-Dichlorphenoxyessigsäure (2,4-D);2,4-D;2,4-D;Pestizide/Biozide;ug/L
+2,6-Dichlorbenzamid;2,6-DCBA;DCBA;Pestizide/Biozide;ug/L
+Glyphosat;Glyphosat;;Pestizide/Biozide;ug/L
+AMPA;AMPA;;Pestizide/Biozide;ug/L
+Isoproturon;Isoproturon;;Pestizide/Biozide;ug/L
+Mecoprop;Mecoprop;;Pestizide/Biozide;ug/L
+Terbuthylazin;Terbuthylazin;;Pestizide/Biozide;ug/L
+Terbutryn;Terbutryn;;Pestizide/Biozide;ug/L
+Thiacloprid;Thiacloprid;;Pestizide/Biozide;ug/L
+Diethyltoluamid (DEET);Diethyltoluamid;DEET;Pestizide/Biozide;ug/L
+Desethylterbutylazin;Desethylterbutylazin;;Pestizide/Biozide;ug/L
+Simazin;Simazin;;Pestizide/Biozide;ug/L
+Imidacloprid;Imidacloprid;;Pestizide/Biozide;ug/L
+Bisphenol A;Bisphenol A;;Industriechemikalien;ug/L
+Bisphenol F;Bisphenol F;;Industriechemikalien;ug/L
+Benzothiazol;Benzothiazol;BT;Industriechemikalien;ug/L
+Methylthiobenzothiazol;MTBT;MTBT;Industriechemikalien;ug/L
+Hydroxybenzothiazol;2-Hydroxybenzothiazol;OH-BT;Industriechemikalien;ug/L
+Benzotriazol;Benzotriazol;;Industriechemikalien;ug/L
+Tolyltriazole;Tolyltriazole;;Industriechemikalien;ug/L
+Perfluoroctansäure (PFOA);PFOA;PFOA;Industriechemikalien;ug/L
+Perfluoroctansulfonat (PFOS);PFOS;PFOS;Industriechemikalien;ug/L
+PAK 16 EPA;PAK 16 EPA;PAK 16;PAK 16;ug/L
+Naphthalin;Naphthalin;;PAK 16;ug/L
+Acenaphthylen;Acenaphthylen;;PAK 16;ug/L
+Acenaphthen;Acenaphthen;;PAK 16;ug/L
+Fluoren;Fluoren;;PAK 16;ug/L
+Phenanthren;Phenanthren;;PAK 16;ug/L
+Anthracen;Anthracen;;PAK 16;ug/L
+Fluoranthen;Fluoranthen;;PAK 16;ug/L
+Pyren;Pyren;;PAK 16;ug/L
+Benzo[a]anthracen;Benzo[a]anthracen;;PAK 16;ug/L
+Chrysen;Chrysen;;PAK 16;ug/L
+Benzo[b]fluoranthen;Benzo[b]fluoranthen;;PAK 16;ug/L
+Benzo[k]fluoranthen;Benzo[k]fluoranthen;;PAK 16;ug/L
+Benzo[a]pyren;Benzo[a]pyren;;PAK 16;ug/L
+Dibenz[a,h]anthracen;Dibenz[a,h]anthracen;;PAK 16;ug/L
+Benzo[g,h,i]perylen;Benzo[g,h,i]perylen;;PAK 16;ug/L
+Indeno[1,2,3-c,d]pyren;Indeno[1,2,3-c,d]pyren;;PAK 16;ug/L
+Nonylphenole;Nonylphenole;;Alkylphenole;ug/L
+2-Phenylphenol;2-Phenylphenol;Phenylphenol;Alkylphenole;ug/L
+4-tert-Octylphenol;4-tert-Octylphenol;Octylphenol;Alkylphenole;ug/L
+4-tert-Butylphenol;4-tert-Butylphenol;Butylphenol;Alkylphenole;ug/L
+Escherichia coli;E. coli (Miniaturverf.);E. coli;Mikrobiologie;MPN/100 ml
+Enterokokken;E-Kokken (Miniaturverf.);;Mikrobiologie;MPN/100 ml
+somat. Coliphagen;somat. Coliphagen;Coliphagen;Mikrobiologie;PFU/100 ml
+Koloniezahl 22°C (TW);Koloniezahl 22°C (TW);KBE;Mikrobiologie;colonies/ml
+Koloniezahl 36°C (TW);Koloniezahl 36°C (TW);KBE;Mikrobiologie;colonies/ml
+Pseudomonas aeruginosa;Ps/aer;P. aeruginosa;Mikrobiologie;#/100 ml
+Ps/aer (Schnelltest);Ps/aer (Schnelltest);P. aeruginosa;Mikrobiologie;#/100 ml
+Methyl-tert-butylether;MTBE;MTBE;Sonstige;ug/L
+Nikotin;Nikotin;;Sonstige;ug/L
+Octylisothiazolinon;OIT;OIT;Pestizide/Biozide;ug/L
+Benzisothiazolinon;BIT;BIT;Pestizide/Biozide;ug/L
