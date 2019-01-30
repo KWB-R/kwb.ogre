@@ -13,7 +13,6 @@ importFrom(kwb.db, sqlForSelect)
 
 importFrom(kwb.event, ganttPlotEvents)
 
-importFrom(kwb.monitoring, filterForRelevantBottles)
 importFrom(kwb.monitoring, getOrCreatePath)
 
 importFrom(kwb.odm, odmSites)

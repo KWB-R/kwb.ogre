@@ -152,7 +152,7 @@ readOgreSamplerFileByName <- function # readOgreSamplerFileByName
   }
   
   # filter for relevant bottles
-  sampleDataExtended <- filterForRelevantBottles(sampleDataExtended, bottlesToConsider)
+  sampleDataExtended <- kwb.monitoring:::filterForRelevantBottles(sampleDataExtended, bottlesToConsider)
   
   kwb.utils::renameColumns(sampleDataExtended, list(myDateTime = "sampleTime"))
 }

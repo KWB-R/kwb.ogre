@@ -1,8 +1,46 @@
 Package: kwb.ogre
-Maintainer: Hauke Sonnenberg <hauke.sonnenberg@kompetenz-wasser.de>
-Imports: kwb.datetime, kwb.db, kwb.event, kwb.logger, kwb.monitoring, kwb.odm, kwb.quantum, kwb.read, kwb.utils, manipulate
-Author: Hauke Sonnenberg
-Version: 0.0.99
-License: GPL
-Title: Functions used within the OGRE project at KWB; DEVELOPMENT version
-Description: This package contains functions for: reading logger files.
+Title: Functions Used Within the OGRE Project at KWB
+Version: 0.0.0.9000
+Authors@R: 
+    c(person(given = "Hauke",
+             family = "Sonnenberg",
+             role = c("aut", "cre"),
+             email = "hauke.sonnenberg@kompetenz-wasser.de",
+             comment = c(ORCID = "0000-0001-9134-2871")),
+      person(given = "Kompetenzzentrum Wasser Berlin gGmbH",
+             role = "cph"),
+      person(given = "Michael",
+             family = "Rustler",
+             role = "ctb",
+             email = "michael.rustler@kompetenz-wasser.de",
+             comment = "0000-0003-0647-7726"))
+Description: This package contains functions for: reading
+    logger files.
+License: MIT + file LICENSE
+URL: https://github.com/KWB-R/kwb.ogre
+BugReports: https://github.com/KWB-R/kwb.ogre/issues
+Imports: 
+    kwb.datetime,
+    kwb.db,
+    kwb.event,
+    kwb.logger,
+    kwb.monitoring,
+    kwb.odm,
+    kwb.quantum,
+    kwb.read,
+    kwb.utils,
+    manipulate
+Suggests: 
+    covr
+Encoding: UTF-8
+LazyData: true
+Remotes:  
+    github::kwb-r/kwb.datetime,
+    github::kwb-r/kwb.db,
+    github::kwb-r/kwb.event,
+    github::kwb-r/kwb.logger,
+    github::kwb-r/kwb.monitoring,
+    github::kwb-r/kwb.odm,
+    github::kwb-r/kwb.quantum,
+    github::kwb-r/kwb.read,
+    github::kwb-r/kwb.utils
