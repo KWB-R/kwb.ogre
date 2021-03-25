@@ -1,42 +1,64 @@
 # openBottleSelector -----------------------------------------------------------
-openBottleSelector <- function # openBottleSelector
-### openBottleSelector
-(
-  bottleEvents, 
-  ### data frame as returned by \code{\link{samplingEventsToBottleEvents}}, with
-  ### begin and end of time intervals represented by an auto sampler's bottle.
-  version=2
-)
-{
+#' Open Bottle Selecter
+#'
+#' @param bottleEvents data frame as returned by \code{\link{samplingEventsToBottleEvents}}, 
+#' with begin and end of time intervals represented by an auto sampler's bottle. 
+#' @param version 1 or 2 (default: 2), used to switch between different plotting 
+#' options
+#' @return opens bottle selector
+#' @export
+#' @importFrom manipulate button manipulate
+openBottleSelector <- function(bottleEvents, version = 2) {
   n <- nrow(bottleEvents)
   
   manipulate.args <- c(
     .expressionPlotFunctionCall(version, n),
     .manipulateControlArguments(version, n, bottleEvents$dur_minutes),
-    list(ok= button(label="Ok"),
-         cancel= button(label="Cancel")))
+    list(ok= manipulate::button(label="Ok"),
+         cancel= manipulate::button(label="Cancel")))
   
-  do.call(manipulate, manipulate.args)
+  do.call(manipulate::manipulate, manipulate.args)
   
   #manipulatorSetState("bottleEvents.tmp", bottleEvents)
 }
 
 # .expressionPlotFunctionCall --------------------------------------------------
+#' .expressionPlotFunctionCall
+#'
+#' @param version version
+#' @param n n
+#'
+#' @return plot
+#'
+#' @keywords internal
+#' @noRd
+#' @importFrom kwb.utils stringToExpression
+#' 
 .expressionPlotFunctionCall <- function(version, n=0)
 {
   if (version == 1) {
     variableNames_numeric <- .variableNames(n, "n")
     expressionLine <- sprintf(".ganttPlotSamples(version=1, c(%s), ok=ok, cancel=cancel)",
-                              commaCollapsed(variableNames_numeric))
+                              kwb.utils::commaCollapsed(variableNames_numeric))
   }
   else {
     expressionLine <- ".ganttPlotSamples(version=2, bottle, duration, ok=ok, cancel=cancel)"
   } 
   
-  list("_expr"=stringToExpression(expressionLine))
+  list("_expr"=kwb.utils::stringToExpression(expressionLine))
 }
 
 # .manipulateControlArguments --------------------------------------------------
+#' .manipulateControlArguments
+#'
+#' @param version version
+#' @param n n
+#' @param durations_min durations_min 
+#'
+#' @return ???
+#' @keywords internal
+#' @noRd
+#' @importFrom manipulate picker slider
 .manipulateControlArguments <- function(version, n=0, durations_min)
 {
   controlArguments <- list()
@@ -49,7 +71,7 @@ openBottleSelector <- function # openBottleSelector
     for (i in 1:n) {      
       label <- paste("\"length\" bottle", i, "(0 = discard)")
       maxValue <- floor(durations_min[i])
-      bottleSlider <- slider(0, maxValue, maxValue, label, step=1)
+      bottleSlider <- manipulate::slider(0, maxValue, maxValue, label, step=1)
       controlArguments[[variableNames_numeric[i]]] <- bottleSlider
     }    
   }
@@ -58,14 +80,27 @@ openBottleSelector <- function # openBottleSelector
     choices <- paste(1:n)
     pickerArgs <- c(as.list(choices), initial=choices[1], label="bottle")
     
-    controlArguments[["bottle"]] <- do.call(picker, pickerArgs)
-    controlArguments[["duration"]] <- slider(0, 1, 1, "duration", step=0.01)    
+    controlArguments[["bottle"]] <- do.call(manipulate::picker, pickerArgs)
+    controlArguments[["duration"]] <- manipulate::slider(0, 1, 1, "duration", step=0.01)    
   }
   
   return (controlArguments)
 }
 
 # .ganttPlotSamples ------------------------------------------------------------
+#' .ganttPlotSamples
+#'
+#' @param version version
+#' @param ... ...
+#' @param ok ok
+#' @param cancel cancel
+#'
+#' @return plot
+#' @keywords internal
+#' @noRd
+#' @importFrom grDevices dev.off
+#' @importFrom manipulate manipulatorGetState manipulatorSetState
+#' @importFrom kwb.utils assignGlobally getGlobally
 .ganttPlotSamples <- function
 (
   version = 1, 
@@ -79,11 +114,11 @@ openBottleSelector <- function # openBottleSelector
 {
   variableName <- "bottleEvents.tmp"
   
-  bottleEvents <- manipulatorGetState(variableName)
+  bottleEvents <- manipulate::manipulatorGetState(variableName)
   
   if (is.null(bottleEvents)) {
     
-    bottleEvents <- getGlobally("bottleEvents")
+    bottleEvents <- kwb.utils::getGlobally("bottleEvents")
   }  
   
   if (ok || cancel) {
@@ -92,7 +127,8 @@ openBottleSelector <- function # openBottleSelector
       
       variableNameUser <- "bottleEvents.user"
       
-      assignGlobally(variableNameUser, manipulatorGetState(variableName))
+      kwb.utils::assignGlobally(variableNameUser, 
+                                manipulate::manipulatorGetState(variableName))
       
       cat("*** The global variable", variableNameUser, "has been set.\n")
     }    
@@ -111,40 +147,39 @@ openBottleSelector <- function # openBottleSelector
     ganttPlotSamples_v2(bottleEvents, ...)
   }        
   
-  manipulatorSetState(variableName, bottleEvents)    
+  manipulate::manipulatorSetState(variableName, bottleEvents)    
 }
 
 # ganttPlotSamples_v1 ----------------------------------------------------------
-ganttPlotSamples_v1 <- function # ganttPlotSamples_v1
-### ganttPlotSamples_v1
-(
-  bottleEvents, 
-  ### data frame as returned by \code{\link{samplingEventsToBottleEvents}}, with
-  ### begin and end of time intervals represented by an auto sampler's bottle.
-  endTimeOffsets
-  ### vector of integer offsets determining new end times for the bottle events
-  ### by: bottleEvents$tEnd <- bottleEvents$tBeg + 60*endTimeOffsets - 1
-)
-{
+#' Gantt Plot Samples (version 1)
+#'
+#' @param bottleEvents data frame as returned by \code{\link{samplingEventsToBottleEvents}}, 
+#' with begin and end of time intervals represented by an auto sampler's bottle. 
+#' @param endTimeOffsets vector of integer offsets determining new end times for 
+#' the bottle events by: bottleEvents$tEnd <- bottleEvents$tBeg + 60*endTimeOffsets - 1
+#' 
+#' @return ganttPlotSamples version 1
+#' @export
+#' @importFrom kwb.event ganttPlotEvents
+ganttPlotSamples_v1 <- function (bottleEvents, endTimeOffsets) {
   bottleEvents$tEnd <- bottleEvents$tBeg + 60*endTimeOffsets - 1
   bottleOk <- bottleEvents$tEnd >= bottleEvents$tBeg
-  ganttPlotEvents(bottleEvents[bottleOk, ])
+  kwb.event::ganttPlotEvents(bottleEvents[bottleOk, ])
   
   return (bottleEvents)
 }
 
 # ganttPlotSamples_v2 ----------------------------------------------------------
-ganttPlotSamples_v2 <- function # ganttPlotSamples_v2
-### ganttPlotSamples_v2
-(
-  bottleEvents,
-  ### data frame as returned by \code{\link{samplingEventsToBottleEvents}}, with
-  ### begin and end of time intervals represented by an auto sampler's bottle.  
-  bottle,
-  ### bottle number
-  duration
-  ### "duration" of "bottle event"
-)
+#' Gantt Plot Samples (version 2)
+#'
+#' @param bottleEvents data frame as returned by \code{\link{samplingEventsToBottleEvents}}, 
+#' with begin and end of time intervals represented by an auto sampler's bottle.  
+#' @param bottle bottle number
+#' @param duration "duration" of "bottle event"
+#' @return ganttPlotSamples version 2
+#' @export
+#' @importFrom kwb.event ganttPlotEvents
+ganttPlotSamples_v2 <- function (bottleEvents, bottle, duration)
 {
   bottle <- as.integer(bottle)
   
@@ -156,7 +191,7 @@ ganttPlotSamples_v2 <- function # ganttPlotSamples_v2
   
   bottleOk <- bottleEvents$tEnd >= bottleEvents$tBeg
   
-  ganttPlotEvents(bottleEvents[bottleOk, ])
+  kwb.event::ganttPlotEvents(bottleEvents[bottleOk, ])
   
   return (bottleEvents)
 }

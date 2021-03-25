@@ -1,21 +1,31 @@
 # getInfoOnAnalysedSamplesFromExcel --------------------------------------------
-getInfoOnAnalysedSamplesFromExcel <- function # getInfoOnAnalysedSamplesFromExcel
-### Read information on analysed samples from Excel file maintained by OGRE team
+#' getInfoOnAnalysedSamplesFromExcel
+#' @description Read information on analysed samples from Excel file 
+#' maintained by OGRE team
+#' @param xls full path to Excel file
+#' @param dbg if TRUE, debug messages are shown, else not
+#' @param sheetPrefix prefix of sheet names of sheets to be read
+#' (default: "data_")
+#' @return data frame with ...
+#' @export
+#' @seealso \code{\link{getInfoOnAnalysedSamplesForStation}}
+#' @importFrom kwb.db hsTables
+#' @importFrom kwb.utils catIf commaCollapsed rbindAll
+getInfoOnAnalysedSamplesFromExcel <- function
 (
   xls, 
-  ### full path to Excel file
   dbg = FALSE,
-  ### if TRUE, debug messages are shown, else not
   sheetPrefix = "data_"
-  ### prefix of sheet names of sheets to be read
+
 )
 {
-  ##seealso<< \code{\link{getInfoOnAnalysedSamplesForStation}}
   
-  tableNames <- hsTables(xls)
+  tableNames <- kwb.db::hsTables(xls)
   
   if (dbg) {
-    cat("Es gibt die folgenden Tabellen:\n", commaCollapsed(tableNames), "\n")
+    cat("Es gibt die folgenden Tabellen:\n", 
+        kwb.utils::commaCollapsed(tableNames), 
+        "\n")
   }
   
   prefixPattern <- paste0("^", sheetPrefix)
@@ -36,7 +46,7 @@ getInfoOnAnalysedSamplesFromExcel <- function # getInfoOnAnalysedSamplesFromExce
   stations <- gsub(prefixPattern, "", dataTableNames)
   
   datalist <- lapply(stations, function(station) {
-    catIf(dbg, "\n*** Station:", station, "\n")
+    kwb.utils::catIf(dbg, "\n*** Station:", station, "\n")
     getInfoOnAnalysedSamplesForStation(
       xls, station = station, dbg = dbg, sheetPrefix = sheetPrefix
     )
@@ -46,22 +56,32 @@ getInfoOnAnalysedSamplesFromExcel <- function # getInfoOnAnalysedSamplesFromExce
 }
 
 # getInfoOnAnalysedSamplesForStation -------------------------------------------
-getInfoOnAnalysedSamplesForStation <- function # getInfoOnAnalysedSamplesForStation
-### Read information on analysed samples for one monitoring station from Excel
-### file maintained by OGRE team
+#' getInfoOnAnalysedSamplesForStation
+#' @description Read information on analysed samples for one monitoring 
+#' station from Excel file maintained by OGRE team
+#' @param xls full path to Excel file
+#' @param station three letter code of monitoring station for which data are to be read
+#' @param dbg if TRUE, debug messages are shown, else not
+#' @param sheetPrefix prefix of sheet names of sheets to be read
+#' (default: "data_")
+#' @return data frame with columns \emph{station}, \emph{LIMS_Nr}, 
+#' \emph{BAK_LIMS_Nr}, \emph{firstSampling}, \emph{lastSampling} and 
+#' \emph{Art_der_Probe}
+#' @export
+#' @importFrom kwb.db hsGetTable
+#' @importFrom kwb.utils hsQuoteChr isNaOrEmpty isNullOrEmpty printIf 
+#' renameColumns removeSpaces selectColumns
+#' @seealso \code{\link{getInfoOnAnalysedSamplesFromExcel}}
+getInfoOnAnalysedSamplesForStation <- function
 (
   xls,
-  ### full path to Excel file
   station,
-  ### three letter code of monitoring station for which data are to be read
   dbg = FALSE,
-  ### if TRUE, debug messages are shown, else not
   sheetPrefix = "data_"
   ### prefix of sheet names of sheets to be read
 )
 {
-  ##seealso<< \code{\link{getInfoOnAnalysedSamplesFromExcel}}
-  
+
   # Compose sheet name
   sheet <- paste0(sheetPrefix, station)
   
@@ -79,7 +99,9 @@ getInfoOnAnalysedSamplesForStation <- function # getInfoOnAnalysedSamplesForStat
   if (length(missingFields) > 0) {
     warning(
       sprintf("There are missing columns in range '%s' of '%s': %s. ", 
-              sheet, xls, commaCollapsed(hsQuoteChr(missingFields))),
+              sheet, 
+              xls, 
+              kwb.utils::commaCollapsed(kwb.utils::hsQuoteChr(missingFields))),
       "I skip this range!"
     )
     return (NULL)
@@ -95,26 +117,28 @@ getInfoOnAnalysedSamplesForStation <- function # getInfoOnAnalysedSamplesForStat
   )
   
   # Return NULL if there is no data at all
-  if (isNullOrEmpty(sampling)) {
+  if (kwb.utils::isNullOrEmpty(sampling)) {
     warning(sprintf("Range '%s' of '%s' did not contain any data", sheet, xls))
     return (NULL)
   }
   
   # Reduce to configured fields and rename fields if they have an alias
   sampling <- kwb.utils::renameColumns(
-    selectColumns(sampling, intersect(fieldConfig$Name, availableFields)), 
+    kwb.utils::selectColumns(sampling, 
+                             intersect(fieldConfig$Name, 
+                                       availableFields)), 
     .getFieldRenames(fieldConfig)
   )
   
   # Provide the timestamps of beginning and end of sampling
-  sampling$Zeitraum_Probenahme <- removeSpaces(sampling$Zeitraum_Probenahme)
+  sampling$Zeitraum_Probenahme <- kwb.utils::removeSpaces(sampling$Zeitraum_Probenahme)
   
   pattern <- "^\\d{2}:\\d{2}(-\\d{2}:\\d{2})?$"
   valid <- grepl(pattern, sampling$Zeitraum_Probenahme)
   
   if (! all(valid)) {
     stop("There are invalid values of 'Zeitraum_Probenahme' ('hh:mm-hh:mm' ",
-         "or 'just hh:mm'): ", commaCollapsed(
+         "or 'just hh:mm'): ", kwb.utils::commaCollapsed(
            hsQuoteChr(sampling$Zeitraum_Probenahme[! valid])))
   }
   
@@ -136,21 +160,31 @@ getInfoOnAnalysedSamplesForStation <- function # getInfoOnAnalysedSamplesForStat
   
   nextDay <- sampling$lastSampling < sampling$firstSampling
   
-  printIf(dbg, sampling[nextDay, ], "*** These samplings end at the next day")
+  kwb.utils::printIf(dbg, 
+                     sampling[nextDay, ], 
+                     "*** These samplings end at the next day")
   
   sampling$lastSampling[nextDay] <- .nextDay(sampling$lastSampling[nextDay])
   
-  printIf(dbg, sampling[nextDay, ], "*** After correction")
+  kwb.utils::printIf(dbg, 
+                     sampling[nextDay, ], 
+                     "*** After correction")
 
   sampling$station <- station
 
   columns <- c("station", "LIMS_Nr", "BAK_LIMS_Nr", "firstSampling", 
                "lastSampling", "Art_der_Probe")  
   
-  selectColumns(sampling, columns)
+  kwb.utils::selectColumns(sampling, columns)
 }
 
 # .getFieldConfig --------------------------------------------------------------
+#' .getFieldConfig
+#'
+#' @return data frame
+#' @keywords internal
+#' @noRd
+#' @importFrom utils read.csv2
 .getFieldConfig <- function()
 {
   fieldConfigLines <- c(
@@ -169,6 +203,14 @@ getInfoOnAnalysedSamplesForStation <- function # getInfoOnAnalysedSamplesForStat
 }
 
 # .getFieldRenames -------------------------------------------------------------
+#' .getFieldRename
+#'
+#' @param fieldConfig fieldConfig
+#'
+#' @return ???
+#' @keywords internal
+#' @noRd
+#' @importFrom  kwb.utils toLookupList
 .getFieldRenames <- function(fieldConfig)
 {
   hasAlias <- fieldConfig$Alias != ""
@@ -180,13 +222,23 @@ getInfoOnAnalysedSamplesForStation <- function # getInfoOnAnalysedSamplesForStat
 }
 
 # .toTimestamp -----------------------------------------------------------------
+#' .toTimestamp
+#'
+#' @param dates dates 
+#' @param parts parts 
+#' @param partNumber partNumber
+#'
+#' @return ???
+#' @keywords internal
+#' @noRd
+#' @importFrom kwb.datetime hsToPosix
 .toTimestamp <- function(dates, parts, partNumber)
 {
   times <- sapply(parts, function(x) {
     ifelse(length(x) >= partNumber, x[partNumber], x[1])
   })
   
-  hsToPosix(paste(dates, times))
+  kwb.datetime::hsToPosix(paste(dates, times))
 }
 
 # .nextDay ---------------------------------------------------------------------
@@ -196,12 +248,17 @@ getInfoOnAnalysedSamplesForStation <- function # getInfoOnAnalysedSamplesForStat
 }
 
 # checkLimsNumbers -------------------------------------------------------------
-checkLimsNumbers <- function # checkLimsNumbers
-### check for duplicate LIMS numbers in sample information
+#' checkLimsNumbers
+#' @description check for duplicate LIMS numbers in sample information
+#' @param x   data frame as returned by \code{\link{getInfoOnAnalysedSamplesFromExcel}}
+#' or \code{\link{getInfoOnAnalysedSamplesForStation}}
+#' @return duplicated entries (if any)
+#' @export
+#'
+#' @importFrom stats aggregate na.omit
+checkLimsNumbers <- function
 (
   x
-  ### data frame as returned by \code{\link{getInfoOnAnalysedSamplesFromExcel}}
-  ### or \code{\link{getInfoOnAnalysedSamplesForStation}}
 )
 {
   na_omit <- stats::na.omit
