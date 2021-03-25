@@ -1,6 +1,13 @@
 # OGRE_VARIABLES ---------------------------------------------------------------
-OGRE_VARIABLES <- function # OGRE_VARIABLES
-### OGRE_VARIABLES
+#' OGRE_VARIABLES
+#'
+#' @return data frame with laboratory variables
+#' @export
+#' @importFrom utils read.table
+#' @examples
+#' str(OGRE_VARIABLES())
+#' 
+OGRE_VARIABLES <- function
 (
 )
 {
@@ -13,6 +20,15 @@ OGRE_VARIABLES <- function # OGRE_VARIABLES
 }
 
 # OGRE_ODM_SAMPLE_TYPES --------------------------------------------------------
+#' OGRE_ODM_SAMPLE_TYPES
+#'
+#' @param stringsAsFactors TRUE or FALSE (default: \code{\link{default.stringsAsFactors}})
+#' passed on to data.frame()
+#' @return data frame with sample types
+#' @export
+#' @importFrom kwb.utils callWithStringsAsFactors
+#' @examples
+#' str(OGRE_ODM_SAMPLE_TYPES())
 OGRE_ODM_SAMPLE_TYPES <- function # OGRE_ODM_SAMPLE_TYPES
 ### OGRE_ODM_SAMPLE_TYPES
 (
@@ -35,11 +51,17 @@ OGRE_ODM_SAMPLE_TYPES <- function # OGRE_ODM_SAMPLE_TYPES
 }
 
 # OGRE_ODM_UNITS ---------------------------------------------------------------
-OGRE_ODM_UNITS <- function # OGRE_ODM_UNITS
-### OGRE_ODM_UNITS
+#' OGRE_ODM_UNITS
+#' @param stringsAsFactors TRUE or FALSE (default: \code{\link{default.stringsAsFactors}})
+#' passed on to data.frame()
+#' @return data frame with units
+#' @export
+#' @importFrom kwb.utils callWithStringsAsFactors
+#' @examples
+#' str(OGRE_ODM_UNITS())
+OGRE_ODM_UNITS <- function 
 (
   stringsAsFactors = default.stringsAsFactors()
-  ### passed on to data.frame()
 )
 {
   kwb.utils::callWithStringsAsFactors(
@@ -55,11 +77,17 @@ OGRE_ODM_UNITS <- function # OGRE_ODM_UNITS
 }
 
 # OGRE_ODM_METHODS -------------------------------------------------------------
-OGRE_ODM_METHODS <- function # OGRE_ODM_METHODS
-### OGRE_ODM_METHODS
+#' OGRE_ODM_METHODS
+#' @param stringsAsFactors TRUE or FALSE (default: \code{\link{default.stringsAsFactors}})
+#' passed on to data.frame()
+#' @return data frame with methods
+#' @export
+#' @importFrom kwb.utils callWithStringsAsFactors
+#' @examples
+#' str(OGRE_ODM_METHODS())
+OGRE_ODM_METHODS <- function 
 (
   stringsAsFactors = default.stringsAsFactors()
-  ### passed on to data.frame()
 )
 {
   kwb.utils::callWithStringsAsFactors(
@@ -72,11 +100,18 @@ OGRE_ODM_METHODS <- function # OGRE_ODM_METHODS
 }
 
 # OGRE_ODM_LABMETHODS ----------------------------------------------------------
-OGRE_ODM_LABMETHODS <- function # OGRE_ODM_LABMETHODS
-### OGRE_ODM_LABMETHODS
+#' OGRE_ODM_LABMETHODS
+#' 
+#' @param stringsAsFactors TRUE or FALSE (default: \code{\link{default.stringsAsFactors}})
+#' passed on to data.frame()
+#' @return data frame with labmethods
+#' @export
+#' @importFrom kwb.utils callWithStringsAsFactors
+#' @examples
+#' str(OGRE_ODM_LABMETHODS())
+OGRE_ODM_LABMETHODS <- function
 (
   stringsAsFactors = default.stringsAsFactors()
-  ### passed on to data.frame()
 )
 {
   kwb.utils::callWithStringsAsFactors(
@@ -91,11 +126,18 @@ OGRE_ODM_LABMETHODS <- function # OGRE_ODM_LABMETHODS
 }
 
 # OGRE_ODM_SOURCES -------------------------------------------------------------
-OGRE_ODM_SOURCES <- function # OGRE_ODM_SOURCES
-### OGRE_ODM_SOURCES
+#' OGRE_ODM_SOURCES 
+#' 
+#' @param stringsAsFactors TRUE or FALSE (default: \code{\link{default.stringsAsFactors}})
+#' passed on to data.frame()
+#' @return data frame with sources
+#' @export
+#' @importFrom kwb.utils callWithStringsAsFactors
+#' @examples
+#' str(OGRE_ODM_SOURCES())
+OGRE_ODM_SOURCES <- function
 (
   stringsAsFactors = default.stringsAsFactors()
-  ### passed on to data.frame()
 )
 {
   kwb.utils::callWithStringsAsFactors(
@@ -110,10 +152,18 @@ OGRE_ODM_SOURCES <- function # OGRE_ODM_SOURCES
 }
 
 # OGRE_ODM_SITES ---------------------------------------------------------------
+#' OGRE_ODM_SITES 
+#' @description TODO: further information on the sites (e.g. addresses need to be
+#' added manually within the database...)  
+#' @param stringsAsFactors TRUE or FALSE (default: \code{\link{default.stringsAsFactors}})
+#' passed on to data.frame()
+#' @return data frame with sources
+#' @export
+#' @importFrom kwb.utils callWithStringsAsFactors
+#' @examples
+#' str(OGRE_ODM_SITES())
 OGRE_ODM_SITES <- function # OGRE_ODM_SITES
-### OGRE_ODM_SITES. 
-### TODO: further information on the sites (e.g. addresses need to be
-### added manually within the database...)  
+
 (
   stringsAsFactors = default.stringsAsFactors()
   ### passed on to data.frame()
@@ -168,8 +218,16 @@ OGRE_ODM_SITES <- function # OGRE_ODM_SITES
 }
 
 # OGRE_DICTIONARY_FILE ---------------------------------------------------------
-OGRE_DICTIONARY_FILE <- function # default folder "dictionary" file
-### default "dictionary" file describing the folder structure to be used in OGRE
+#' Default folder "dictionary" file
+#' @description default "dictionary" file describing the folder structure to be 
+#' used in OGRE
+#' @return path to OGRE path dictionary file
+#' @export
+#'
+#' @examples
+#' OGRE_DICTIONARY_FILE()
+#' 
+OGRE_DICTIONARY_FILE <- function 
 (
 )
 {
@@ -177,23 +235,33 @@ OGRE_DICTIONARY_FILE <- function # default folder "dictionary" file
 }
 
 # OGRE_RAIN_GAUGES -------------------------------------------------------------
-OGRE_RAIN_GAUGES <- function # OGRE_RAIN_GAUGES
-### OGRE_RAIN_GAUGES
+#' OGRE_RAIN_GAUGES
+#' 
+#' @return data frame with rain gauges used in OGRE
+#' @export
+#' @importFrom kwb.read BWB_RAIN_GAUGES
+OGRE_RAIN_GAUGES <- function
 ()
 {
   bwbShortNames <- c('Bln IX','Bln X','Bln XI','Kar','Mal','Rei I','Stg','Wil',
                      'Wil a','Wit','Zhl I')
   
-  bwbRainGauges <- BWB_RAIN_GAUGES()
+  bwbRainGauges <- kwb.read::BWB_RAIN_GAUGES()
   bwbRainGauges[bwbRainGauges$BWB_SHORT %in% bwbShortNames, ]
 }
 
 # OGRE_SITES -------------------------------------------------------------------
-OGRE_SITES <- function # OGRE_SITES
-### OGRE_SITES
+#' OGRE_SITES
+#'
+#' @return  list of lists. One list element per Site, each of which is a list
+#' with exactly one list element: SiteID, holding the SiteID of the
+#' corresponding site
+#' @export
+#' @importFrom kwb.odm odmSites
+OGRE_SITES <- function
 () 
 {
-  sites <- odmSites(odbc = "OGRE_META")
+  sites <- kwb.odm::odmSites(odbc = "OGRE_META")
   
   result <- sapply(sites$SiteID, FUN = function(x) {
     list(list(SiteID = x))
@@ -202,48 +270,49 @@ OGRE_SITES <- function # OGRE_SITES
   names(result) <- sites$SiteCode
   
   result
-  ### list of lists. One list element per Site, each of which is a list
-  ### with exaclty one list element: SiteID, holding the SiteID of the
-  ### corresponding site
 }
 
 # OGRE_TIMESERIES --------------------------------------------------------------
-OGRE_TIMESERIES <- function # OGRE_TIMESERIES
-### OGRE_TIMESERIES
+#' OGRE_TIMESERIES
+#'
+#' @return list
+#' @export
+#' @importFrom kwb.db hsLookupOrAddRecord setCurrentDb
+OGRE_TIMESERIES <- function
 ()
 {
   db <- "OGRE_META"
   
-  setCurrentDb(db)
+  kwb.db::setCurrentDb(db)
   
   list (
     
     RAIN_FUB_RAW = list(
       
-      MethodID = hsLookupOrAddRecord(
+      MethodID = kwb.db::hsLookupOrAddRecord(
         db, "Methods", 
         list(MethodDescription="R-import rain mm/h"), 
         list(),
         idField = "MethodID"),
       
-      VariableID = hsLookupOrAddRecord(
+      VariableID = kwb.db::hsLookupOrAddRecord(
         db, "Variables", 
         list(VariableCode = "Precipitation"),
         list(VariableName = "Precipitation",
-             VariableUnitsID = hsLookupOrAddRecord(
+             VariableUnitsID = kwb.db::hsLookupOrAddRecord(
                db, "Units", 
                list(UnitsAbbreviation = "mm"),
                list(),
                idField = "UnitID")),
         idField = "VariableID"),
       
-      SourceID = hsLookupOrAddRecord(
+      SourceID = kwb.db::hsLookupOrAddRecord(
         db, "Sources", 
         list(Organization = "FUB"),         
         list(SourceDescription = "Freie Universitaet Berlin"),
         idField = "SourceID"),
       
-      QualityControlLevelID = hsLookupOrAddRecord(
+      QualityControlLevelID = kwb.db::hsLookupOrAddRecord(
         db, "QualityControlLevels", 
         list(Definition = "Raw data"), 
         list(),
@@ -252,20 +321,20 @@ OGRE_TIMESERIES <- function # OGRE_TIMESERIES
     
     RAIN_BWB5min_RAW = list(
       
-      MethodID = hsLookupOrAddRecord(
+      MethodID = kwb.db::hsLookupOrAddRecord(
         db, "Methods", 
         list(MethodDescription = "R-import of BWB raw rain data (xls)")),
       
-      VariableID = hsLookupOrAddRecord(
+      VariableID = kwb.db::hsLookupOrAddRecord(
         db, "Variables", 
         list(VariableName = "Precipitation")),
       
-      SourceID = hsLookupOrAddRecord(
+      SourceID = kwb.db::hsLookupOrAddRecord(
         db, "Sources", 
         list(Organization = "BWB"), 
         list(SourceDescription = "Berliner Wasserbetriebe")),
       
-      QualityControlLevelID = hsLookupOrAddRecord(
+      QualityControlLevelID = kwb.db::hsLookupOrAddRecord(
         db, "QualityControlLevels", 
         list(Definition = "Raw data"))
     )

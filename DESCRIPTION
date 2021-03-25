@@ -7,13 +7,15 @@ Authors@R:
              role = c("aut", "cre"),
              email = "hauke.sonnenberg@kompetenz-wasser.de",
              comment = c(ORCID = "0000-0001-9134-2871")),
-      person(given = "Kompetenzzentrum Wasser Berlin gGmbH",
-             role = "cph"),
       person(given = "Michael",
              family = "Rustler",
              role = "ctb",
              email = "michael.rustler@kompetenz-wasser.de",
-             comment = "0000-0003-0647-7726"))
+             comment = "0000-0003-0647-7726"),
+      person(given = "OgRe",
+             role = "fnd"),
+      person(given = "Kompetenzzentrum Wasser Berlin gGmbH",
+             role = "cph"))
 Description: This package contains functions for: reading
     logger files.
 License: MIT + file LICENSE
@@ -34,7 +36,7 @@ Suggests:
     covr
 Encoding: UTF-8
 LazyData: true
-Remotes:  
+Remotes: 
     github::kwb-r/kwb.datetime,
     github::kwb-r/kwb.db,
     github::kwb-r/kwb.event,
@@ -44,3 +46,4 @@ Remotes:
     github::kwb-r/kwb.quantum,
     github::kwb-r/kwb.read,
     github::kwb-r/kwb.utils
+RoxygenNote: 7.1.1

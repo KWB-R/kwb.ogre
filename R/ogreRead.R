@@ -1,24 +1,35 @@
 # read_BWB_LaboratoryReportFromXls ---------------------------------------------
-read_BWB_LaboratoryReportFromXls <- function  # read_BWB_LaboratoryReportFromXls
-### read_BWB_LaboratoryReportFromXls. NOTE:  only rows are used in which
-### parameter, LabMethodName and LabUnits are given
+#' read_BWB_LaboratoryReportFromXls
+#' @description NOTE:  only rows are used in which parameter, LabMethodName and 
+#' LabUnits are given
+#' @param labResult.xls full path to Excel file
+#' @param sheetName  name of sheet in Excel file. Default: "Tabelle1"
+#' @param date.format date format used in Excel file. Default: "\%d.\%m.\%Y"
+#' @param methodRequired  if TRUE, only those rows of the Excel file are 
+#' considered in which a method is given in column "Methode". Default: FALSE
+#' @param dbg print debug messages (default: FALSE)
+#' @param open.on.error open on error (default: TRUE)
+#'
+#' @return data frame with columns \emph{VariableCode}, \emph{LabSampleCode}, 
+#' \emph{SamplingDate}, \emph{SiteCode}, \emph{DataValueText}, \emph{LabMethodName}, 
+#' \emph{LabUnits}
+#' @export
+#' @importFrom kwb.utils allAreEqual hsMatrixToListForm hsOpenWindowsExplorer
+#' underscoreToPercent getKeywordPositions hsTrim
+
+read_BWB_LaboratoryReportFromXls <- function
 (
   labResult.xls, 
-  ### full path to Excel file
   sheetName = "Tabelle1",
-  ### name of sheet in Excel file. Default: "Tabelle1"
-  date.format = underscoreToPercent("_d._m._Y"),
-  ### date format used in Excel file. Default: "%d.%m.%Y"
+  date.format = kwb.utils::underscoreToPercent("_d._m._Y"),
   methodRequired = FALSE,
-  ### if TRUE, only those rows of the Excel file are considered in which a
-  ### method is given in column "Methode". Default: FALSE
   dbg = FALSE,
   open.on.error = TRUE
 )
 {
   tableName <- paste0(sheetName, "$")
   
-  labResults.raw <- hsGetTable(
+  labResults.raw <- kwb.db::hsGetTable(
     labResult.xls, 
     tbl = tableName, # as.is = TRUE,
     stringsAsFactors = FALSE, 
@@ -36,7 +47,7 @@ read_BWB_LaboratoryReportFromXls <- function  # read_BWB_LaboratoryReportFromXls
   )
   
   # get the positions (row, column) of the keywords or stop
-  keywordPositions <- getKeywordPositions(
+  keywordPositions <- kwb.utils::getKeywordPositions(
     dataFrame = labResults, 
     keywords = keywords
   )
@@ -99,7 +110,7 @@ read_BWB_LaboratoryReportFromXls <- function  # read_BWB_LaboratoryReportFromXls
   sampleData <- cbind(sampleDataKeys, sampleDataValues)
   
   parameterColumn <- keywordPositions$LabSampleCode[2]
-  parameterNames <- hsTrim(labResults[valueRows, parameterColumn])
+  parameterNames <- kwb.utils::hsTrim(labResults[valueRows, parameterColumn])
   
   names(sampleData) <- c(sampleKeywords, parameterNames)
   
@@ -123,7 +134,7 @@ read_BWB_LaboratoryReportFromXls <- function  # read_BWB_LaboratoryReportFromXls
   
   sampleData$SamplingDate <- SamplingDates
   
-  sampleDataList <- hsMatrixToListForm(
+  sampleDataList <- kwb.utils::hsMatrixToListForm(
     sampleData, 
     keyFields = sampleKeywords,
     colNamePar = "VariableCode",
@@ -131,9 +142,9 @@ read_BWB_LaboratoryReportFromXls <- function  # read_BWB_LaboratoryReportFromXls
   
   # provide metadata on parameters in additional columns
   parameterInfo <- data.frame(
-    VariableCode = hsTrim(labResults[valueRows, keywordPositions$LabSampleCode[2]]),
-    LabMethodName = hsTrim(labResults[valueRows, keywordPositions$LabMethodName[2]]), 
-    LabUnits = hsTrim(labResults[valueRows, keywordPositions$LabUnits[2]]),
+    VariableCode = kwb.utils::hsTrim(labResults[valueRows, keywordPositions$LabSampleCode[2]]),
+    LabMethodName = kwb.utils::hsTrim(labResults[valueRows, keywordPositions$LabMethodName[2]]), 
+    LabUnits = kwb.utils::hsTrim(labResults[valueRows, keywordPositions$LabUnits[2]]),
     stringsAsFactors=FALSE
   )
   
