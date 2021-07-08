@@ -8,7 +8,7 @@ This package contains functions for reading logger files.
 
 ## Installation
 
-```{r echo = TRUE, eval = FALSE}
+```
 #install.packages("remotes", repos = "https://cloud.r-project.org")
 remotes::install_github("KWB-R/kwb.ogre")
 ```
